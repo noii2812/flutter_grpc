@@ -3,7 +3,6 @@ package userProfile;
 
 option go_package="./userProfile";
 
-
 //userProfile query 
 message UserProfile {
     string id = 1;
@@ -13,7 +12,8 @@ message UserProfile {
     string address = 5;
     bool isVerified = 6;
     repeated string roles = 7; //[string]
-    string userId = 8;
+    string user_id = 8;
+    string password = 9 [deprecated = true];
 }
 
 //create user profile
@@ -25,13 +25,32 @@ message CreateUserProfile {
     bool isVerified = 5;
     string password = 6;
     repeated string roles = 7; //[string]
-    string userId = 8;
+    string user_id = 8;
 }
 message LoginRequest {
     string email = 1;
     string password = 2;
 }
+message LoginPassword{
+    string password = 1;
+}
+message LoginResponse {
+    UserProfile userProfile = 1;
+    string message = 2;
+    string token = 3;
+}
+
+message UserProfileSelector{
+
+}
+
+message UserProfilesResponse {
+    repeated UserProfile userProfile = 1;
+}
+
 service UserProfileService {
     rpc CreateUser(CreateUserProfile) returns (UserProfile);
-    rpc Login(LoginRequest) returns (UserProfile);
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc UpdateUser(UserProfile) returns (UserProfile);
+    rpc GetAllUsers(UserProfileSelector) returns (stream UserProfilesResponse);
 }

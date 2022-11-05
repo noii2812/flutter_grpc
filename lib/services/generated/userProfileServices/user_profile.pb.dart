@@ -18,7 +18,8 @@ class UserProfile extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isVerified', protoName: 'isVerified')
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'roles')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
     ..hasRequiredFields = false
   ;
 
@@ -32,6 +33,8 @@ class UserProfile extends $pb.GeneratedMessage {
     $core.bool? isVerified,
     $core.Iterable<$core.String>? roles,
     $core.String? userId,
+  @$core.Deprecated('This field is deprecated.')
+    $core.String? password,
   }) {
     final _result = create();
     if (id != null) {
@@ -57,6 +60,10 @@ class UserProfile extends $pb.GeneratedMessage {
     }
     if (userId != null) {
       _result.userId = userId;
+    }
+    if (password != null) {
+      // ignore: deprecated_member_use_from_same_package
+      _result.password = password;
     }
     return _result;
   }
@@ -146,6 +153,19 @@ class UserProfile extends $pb.GeneratedMessage {
   $core.bool hasUserId() => $_has(7);
   @$pb.TagNumber(8)
   void clearUserId() => clearField(8);
+
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(9)
+  $core.String get password => $_getSZ(8);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(9)
+  set password($core.String v) { $_setString(8, v); }
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(9)
+  $core.bool hasPassword() => $_has(8);
+  @$core.Deprecated('This field is deprecated.')
+  @$pb.TagNumber(9)
+  void clearPassword() => clearField(9);
 }
 
 class CreateUserProfile extends $pb.GeneratedMessage {
@@ -157,7 +177,7 @@ class CreateUserProfile extends $pb.GeneratedMessage {
     ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isVerified', protoName: 'isVerified')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'roles')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId', protoName: 'userId')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userId')
     ..hasRequiredFields = false
   ;
 
@@ -346,5 +366,199 @@ class LoginRequest extends $pb.GeneratedMessage {
   $core.bool hasPassword() => $_has(1);
   @$pb.TagNumber(2)
   void clearPassword() => clearField(2);
+}
+
+class LoginPassword extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginPassword', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'userProfile'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
+    ..hasRequiredFields = false
+  ;
+
+  LoginPassword._() : super();
+  factory LoginPassword({
+    $core.String? password,
+  }) {
+    final _result = create();
+    if (password != null) {
+      _result.password = password;
+    }
+    return _result;
+  }
+  factory LoginPassword.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginPassword.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginPassword clone() => LoginPassword()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginPassword copyWith(void Function(LoginPassword) updates) => super.copyWith((message) => updates(message as LoginPassword)) as LoginPassword; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LoginPassword create() => LoginPassword._();
+  LoginPassword createEmptyInstance() => create();
+  static $pb.PbList<LoginPassword> createRepeated() => $pb.PbList<LoginPassword>();
+  @$core.pragma('dart2js:noInline')
+  static LoginPassword getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginPassword>(create);
+  static LoginPassword? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get password => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set password($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPassword() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPassword() => clearField(1);
+}
+
+class LoginResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LoginResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'userProfile'), createEmptyInstance: create)
+    ..aOM<UserProfile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userProfile', protoName: 'userProfile', subBuilder: UserProfile.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
+    ..hasRequiredFields = false
+  ;
+
+  LoginResponse._() : super();
+  factory LoginResponse({
+    UserProfile? userProfile,
+    $core.String? message,
+    $core.String? token,
+  }) {
+    final _result = create();
+    if (userProfile != null) {
+      _result.userProfile = userProfile;
+    }
+    if (message != null) {
+      _result.message = message;
+    }
+    if (token != null) {
+      _result.token = token;
+    }
+    return _result;
+  }
+  factory LoginResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory LoginResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  LoginResponse clone() => LoginResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  LoginResponse copyWith(void Function(LoginResponse) updates) => super.copyWith((message) => updates(message as LoginResponse)) as LoginResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static LoginResponse create() => LoginResponse._();
+  LoginResponse createEmptyInstance() => create();
+  static $pb.PbList<LoginResponse> createRepeated() => $pb.PbList<LoginResponse>();
+  @$core.pragma('dart2js:noInline')
+  static LoginResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<LoginResponse>(create);
+  static LoginResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  UserProfile get userProfile => $_getN(0);
+  @$pb.TagNumber(1)
+  set userProfile(UserProfile v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserProfile() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserProfile() => clearField(1);
+  @$pb.TagNumber(1)
+  UserProfile ensureUserProfile() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get message => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set message($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMessage() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMessage() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get token => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set token($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasToken() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearToken() => clearField(3);
+}
+
+class UserProfileSelector extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserProfileSelector', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'userProfile'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  UserProfileSelector._() : super();
+  factory UserProfileSelector() => create();
+  factory UserProfileSelector.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserProfileSelector.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserProfileSelector clone() => UserProfileSelector()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserProfileSelector copyWith(void Function(UserProfileSelector) updates) => super.copyWith((message) => updates(message as UserProfileSelector)) as UserProfileSelector; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserProfileSelector create() => UserProfileSelector._();
+  UserProfileSelector createEmptyInstance() => create();
+  static $pb.PbList<UserProfileSelector> createRepeated() => $pb.PbList<UserProfileSelector>();
+  @$core.pragma('dart2js:noInline')
+  static UserProfileSelector getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserProfileSelector>(create);
+  static UserProfileSelector? _defaultInstance;
+}
+
+class UserProfilesResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserProfilesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'userProfile'), createEmptyInstance: create)
+    ..pc<UserProfile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userProfile', $pb.PbFieldType.PM, protoName: 'userProfile', subBuilder: UserProfile.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserProfilesResponse._() : super();
+  factory UserProfilesResponse({
+    $core.Iterable<UserProfile>? userProfile,
+  }) {
+    final _result = create();
+    if (userProfile != null) {
+      _result.userProfile.addAll(userProfile);
+    }
+    return _result;
+  }
+  factory UserProfilesResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserProfilesResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserProfilesResponse clone() => UserProfilesResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserProfilesResponse copyWith(void Function(UserProfilesResponse) updates) => super.copyWith((message) => updates(message as UserProfilesResponse)) as UserProfilesResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserProfilesResponse create() => UserProfilesResponse._();
+  UserProfilesResponse createEmptyInstance() => create();
+  static $pb.PbList<UserProfilesResponse> createRepeated() => $pb.PbList<UserProfilesResponse>();
+  @$core.pragma('dart2js:noInline')
+  static UserProfilesResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserProfilesResponse>(create);
+  static UserProfilesResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<UserProfile> get userProfile => $_getList(0);
 }
 
